@@ -1,0 +1,20 @@
+# Create student dataset
+student <- data.frame(
+  study_hours = 1:10,
+  exam_score = c(55, 57, 60, 62, 65, 68, 70, 72, 75, 78)
+)
+
+# Save as CSV
+write.csv(student, "student.csv", row.names = FALSE)
+
+# Read CSV
+data <- read.csv("student.csv")
+
+# Linear regression model
+model <- lm(exam_score ~ study_hours, data = data)
+summary(model)
+
+# Predict and plot
+plot(data$study_hours, data$exam_score, col="blue", pch=19,
+     xlab="Study Hours", ylab="Exam Score", main="Linear Regression")
+abline(model, col="red", lwd=2)
