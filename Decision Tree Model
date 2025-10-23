@@ -1,0 +1,17 @@
+# Load necessary libraries
+if(!require(rpart)) install.packages("rpart", dependencies=TRUE)
+if(!require(rpart.plot)) install.packages("rpart.plot", dependencies=TRUE)
+library(rpart)
+library(rpart.plot)
+
+# Use iris dataset
+data <- iris
+
+# Build decision tree model
+model <- rpart(Species ~ ., data = data, method = "class", control = rpart.control(cp = 0.01))
+
+# Visualize decision tree
+rpart.plot(model, type = 3, extra = 102, fallen.leaves = TRUE, main = "Decision Tree on Iris Dataset")
+
+# Print model summary
+summary(model)
