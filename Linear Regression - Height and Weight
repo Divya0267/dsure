@@ -1,0 +1,19 @@
+# Predictor and response
+height <- c(150, 155, 160, 165, 170, 175, 180, 185, 190, 195)
+weight <- c(50, 53, 58, 60, 65, 68, 72, 75, 80, 85)
+
+# Create data frame
+data <- data.frame(height, weight)
+
+# Build linear regression model
+model <- lm(weight ~ height, data = data)
+summary(model)
+
+# Predict weight for new height
+newdata <- data.frame(height = 172)
+predicted_weight <- predict(model, newdata)
+cat("Predicted Weight:", round(predicted_weight,2), "\n")
+
+# Plot data and regression line
+plot(height, weight, col="blue", pch=19, xlab="Height (cm)", ylab="Weight (kg)", main="Height vs Weight Regression")
+abline(model, col="red", lwd=2)
