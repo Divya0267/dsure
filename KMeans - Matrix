@@ -1,0 +1,14 @@
+# Create a matrix
+mat <- matrix(c(5, 3, 1, 2, 8, 7, 4, 6, 9, 10, 12, 11), nrow = 6, ncol = 2)
+
+# Perform k-means clustering with 2 clusters
+set.seed(123)  # For reproducibility
+kmeans_result <- kmeans(mat, centers = 2)
+
+# View cluster assignment and centroids
+kmeans_result$cluster
+kmeans_result$centers
+
+# Plot the clusters
+plot(mat, col = kmeans_result$cluster, pch = 19, main = "K-Means Clustering")
+points(kmeans_result$centers, col = 1:2, pch = 8, cex = 2)
