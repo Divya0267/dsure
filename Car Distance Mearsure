@@ -1,0 +1,18 @@
+# Load mtcars dataset
+data <- mtcars
+
+# Extract attributes of Honda Civic and Camaro Z28
+vec1 <- as.numeric(data["Honda Civic", ])
+vec2 <- as.numeric(data["Camaro Z28", ])
+
+# Euclidean distance
+euclidean_dist <- dist(rbind(vec1, vec2), method="euclidean")
+cat("Euclidean Distance:", euclidean_dist, "\n")
+
+# Manhattan distance
+manhattan_dist <- dist(rbind(vec1, vec2), method="manhattan")
+cat("Manhattan Distance:", manhattan_dist, "\n")
+
+# Minkowski distance (p=3)
+minkowski_dist <- dist(rbind(vec1, vec2), method="minkowski", p=3)
+cat("Minkowski Distance (p=3):", minkowski_dist, "\n")
