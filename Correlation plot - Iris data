@@ -1,0 +1,14 @@
+# Load dataset
+data <- iris[, 1:4]  # Only numeric columns
+
+# Compute correlation matrix
+cor_matrix <- cor(data)
+print(cor_matrix)
+
+# Plot correlation matrix using corrplot
+if(!require(corrplot)) install.packages("corrplot", dependencies=TRUE)
+library(corrplot)
+corrplot(cor_matrix, method="color", type="upper", tl.col="black", addCoef.col="black", number.cex=0.8)
+
+# Pairwise scatterplot for overview
+pairs(data, main="Pairwise Scatterplot Matrix of Iris Data", col=iris$Species)
