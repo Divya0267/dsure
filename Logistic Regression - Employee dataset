@@ -1,0 +1,19 @@
+require(MASS)
+require(foreign)
+
+# Create dataset
+employee_data <- data.frame(
+  experience = 1:10,
+  salary = c(25000,30000,35000,40000,45000,50000,60000,65000,70000,80000),
+  performance_score = c(40,45,50,55,60,70,75,80,85,90),
+  promotion = c(0,0,0,0,1,0,1,1,1,1)
+)
+
+# Logistic Regression model
+model <- glm(promotion ~ experience + salary + performance_score, data = employee_data, family = binomial)
+summary(model)
+
+# Predict for new employee
+newdata <- data.frame(experience=5, salary=48000, performance_score=65)
+predicted_class <- ifelse(predict(model, newdata, type="response") >= 0.5, 1, 0)
+predicted_class
