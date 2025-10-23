@@ -1,0 +1,11 @@
+library(dplyr)
+
+# Create a simple dataset
+students <- data.frame(
+  name = c("Asha", "Rahul", "Priya", "Kiran", "Divya"),
+  marks = c(85, 70, 92, 60, 75)
+)
+
+# Filter students with marks greater than 75
+high_scorers <- filter(students, marks > 75)
+print(high_scorers)
