@@ -1,0 +1,20 @@
+# Sample data
+x <- c(10, 20, 30, 40, 50, 60, 70)
+y <- c(5, 15, 25, 35, 45, 55, 65)
+fruits <- c("Apple", "Banana", "Cherry", "Mango")
+quantities <- c(20, 15, 30, 10)
+
+# 1) Plot
+plot(x, y, type="o", col="blue", main="Plot Example", xlab="X values", ylab="Y values")
+
+# 2) Histogram
+hist(x, col="lightgreen", main="Histogram Example", xlab="Values")
+
+# 3) Pie chart
+pie(quantities, labels=fruits, col=rainbow(length(fruits)), main="Pie Chart Example")
+
+# 4) Stripchart
+stripchart(x, method="stack", pch=19, col="orange", main="Stripchart Example")
+
+# 5) Boxplot
+boxplot(x, y, names=c("X", "Y"), col=c("pink", "lightblue"), main="Boxplot Example")
