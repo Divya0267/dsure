@@ -1,0 +1,12 @@
+# Create a 10x10 matrix with random values
+set.seed(123)  # For reproducibility
+mat <- matrix(rnorm(100), nrow = 10, ncol = 10)
+
+# Compute distance matrix
+dist_mat <- dist(mat)
+
+# Perform hierarchical clustering
+hc <- hclust(dist_mat, method = "complete")
+
+# Plot dendrogram
+plot(hc, main = "Hierarchical Clustering Dendrogram")
