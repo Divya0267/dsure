@@ -1,0 +1,20 @@
+# Predictor and response vectors
+heights <- c(150, 155, 160, 165, 170, 175, 180, 185, 190, 195)
+weights <- c(50, 53, 58, 60, 65, 68, 72, 75, 80, 85)
+
+# Create data frame
+data <- data.frame(heights, weights)
+
+# Build linear regression model
+model <- lm(weights ~ heights, data = data)
+summary(model)
+
+# Predict weight for a new height
+newdata <- data.frame(heights = 172)
+predicted_weight <- predict(model, newdata)
+cat("Predicted Weight:", round(predicted_weight, 2), "\n")
+
+# Visualize relationship
+plot(data$heights, data$weights, col="blue", pch=19,
+     xlab="Height (cm)", ylab="Weight (kg)", main="Height vs Weight")
+abline(model, col="red", lwd=2)
