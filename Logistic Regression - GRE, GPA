@@ -1,0 +1,22 @@
+# Load required libraries
+require(MASS)
+require(foreign)
+
+# Read dataset
+data <- read.csv("C:/Users/admin/Downloads/Admission_Predict.csv")
+
+# Clean column names
+colnames(data) <- gsub("\\.", "_", colnames(data))
+
+# Create binary Admission variable: 1 if Chance_of_Admit >= 0.75 else 0
+data$Admission <- ifelse(data$Chance_of_Admit >= 0.75, 1, 0)
+
+# Build logistic regression model using GRE, CGPA, and University_Rating
+model <- glm(Admission ~ GRE_Score + CGPA + University_Rating, data = data, family = binomial)
+
+# Model summary
+summary(model)
+
+# Check model fit using pseudo R-squared
+pseudo_r2 <- 1 - (model$deviance / model$null.deviance)
+cat("Pseudo R-squared:", round(pseudo_r2, 4), "\n")
