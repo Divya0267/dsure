@@ -1,0 +1,9 @@
+# Use built-in dataset (mtcars) as an example
+data <- mtcars
+
+# Compute correlation matrix
+cor_matrix <- cor(data)
+print(cor_matrix)
+
+# Plot correlation matrix
+pairs(data, main = "Scatterplot Matrix with Correlations")
